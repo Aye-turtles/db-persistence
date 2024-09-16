@@ -1,11 +1,9 @@
 package org.ayeturtles.dbpersistence.entities.org;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ayeturtles.dbpersistence.dto.User;
 import org.ayeturtles.dbpersistence.entities.user.UserReq;
 
 import java.sql.Timestamp;

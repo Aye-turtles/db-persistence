@@ -30,7 +30,7 @@ public class Nests {
     private Organizations organization;
 
     @ManyToOne
-    private User responsible;
+    private Users responsible;
 
     private Boolean isActive;
     private Integer eggsQuantity;

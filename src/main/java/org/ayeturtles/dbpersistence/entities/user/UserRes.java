@@ -18,7 +18,5 @@ public class UserRes {
     private String title;
     private String phone;
     private String email;
-    private String password;
-    private String tempPassword;
     private Boolean isAdministrator;
 }

@@ -25,7 +25,7 @@ public class Organizations {
     private Timestamp dateInactive;
     private Boolean isActive;
     @OneToOne
-    private User contact;
+    private Users contact;
     @OneToMany
-    private List<User> members;
+    private List<Users> members;
 }

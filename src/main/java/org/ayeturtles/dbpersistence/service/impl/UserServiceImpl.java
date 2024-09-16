@@ -1,6 +1,7 @@
 package org.ayeturtles.dbpersistence.service.impl;
 
-import org.ayeturtles.dbpersistence.dto.User;
+import org.ayeturtles.dbpersistence.dto.Users;
+import org.ayeturtles.dbpersistence.entities.user.LoginReq;
 import org.ayeturtles.dbpersistence.entities.user.UserReq;
 import org.ayeturtles.dbpersistence.entities.user.UserRes;
 import org.ayeturtles.dbpersistence.mapper.UserMapper;
@@ -11,13 +12,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 
 @Service
 public class UserServiceImpl implements IUserService {
     @Autowired
     private UserRepository repository;
+
     @Autowired
     private UserMapper mapper;
+
 
     @Override
     public Page<UserRes> getUsers(Pageable pageable) {
@@ -25,24 +32,40 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<UserRes> getUsers() {
+        return repository.findAll().stream().map(mapper::toRes).collect(Collectors.toList());
+    }
+
+    @Override
     public UserRes getUserById(Integer id) {
-        return mapper.toRes(repository.findUserById(id));
+        return mapper.toRes(repository.getReferenceById(id));
     }
 
     @Override
     public UserRes createUser(UserReq userReq) {
-        User res = repository.saveAndFlush(mapper.toDto(userReq));
+        Users res = repository.saveAndFlush(mapper.toDto(userReq));
         return mapper.toRes(res);
     }
 
     @Override
     public UserRes updateUser(UserReq userReq) {
-        User res = repository.saveAndFlush(mapper.toDto(userReq));
+        Users res = repository.saveAndFlush(mapper.toDto(userReq));
         return mapper.toRes(res);
     }
 
     @Override
-    public UserRes deleteUser(Integer id) {
-        return mapper.toRes(repository.deleteUserById(id));
+    public void deleteUser(Integer id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public Boolean loginUser(LoginReq req) {
+        Users user = repository.findByEmail(req.getEmail());
+        return user != null && (Objects.equals(req.getPassword(), user.getPassword()) || (Objects.equals(req.getPassword(), user.getTempPassword())));
+    }
+
+    @Override
+    public Users findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 }

@@ -8,5 +8,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface NestsMapper {
     Nests toDto(NestsReq request);
-    NestsRes toRes(Nests response);
+    NestsRes toRes(Nests nests);
 }

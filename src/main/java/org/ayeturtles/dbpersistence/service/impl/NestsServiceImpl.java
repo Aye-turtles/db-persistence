@@ -11,6 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 public class NestsServiceImpl implements INestsService {
@@ -26,7 +29,7 @@ public class NestsServiceImpl implements INestsService {
 
     @Override
     public NestsRes getNestById(Integer id) {
-        return mapper.toRes(repository.findNestsById(id));
+        return mapper.toRes(repository.getReferenceById(id));
     }
 
     @Override
@@ -42,7 +45,13 @@ public class NestsServiceImpl implements INestsService {
     }
 
     @Override
-    public NestsRes deleteNest(Integer id) {
-        return mapper.toRes(repository.deleteNestsById(id));
+    public void deleteNest(Integer id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public List<NestsRes> getNests() {
+        List<Nests> all = repository.findAll();
+        return all.stream().map(nest -> mapper.toRes(nest)).collect(Collectors.toList());
     }
 }
