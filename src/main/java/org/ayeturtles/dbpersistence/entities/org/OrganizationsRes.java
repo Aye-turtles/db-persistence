@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ayeturtles.dbpersistence.dto.User;
+import org.ayeturtles.dbpersistence.entities.user.UserRes;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,13 +16,11 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class OrganizationsRes {
-
-
     private Integer id;
     private String name;
     private Timestamp dateActive;
     private Timestamp dateInactive;
     private Boolean isActive;
-    private User contact;
-    private List<User> members;
+    private UserRes contact;
+    private List<UserRes> members;
 }

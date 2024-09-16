@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import org.ayeturtles.dbpersistence.dto.Organizations;
 import org.ayeturtles.dbpersistence.dto.Sensors;
 import org.ayeturtles.dbpersistence.dto.User;
+import org.ayeturtles.dbpersistence.entities.org.OrganizationsRes;
+import org.ayeturtles.dbpersistence.entities.sensors.SensorsRes;
+import org.ayeturtles.dbpersistence.entities.user.UserRes;
 
 import java.sql.Timestamp;
 
@@ -20,9 +23,9 @@ public class NestsRes {
     private String latitude;
     private String longitude;
 
-    private Sensors sensor;
-    private Organizations organization;
-    private User responsible;
+    private SensorsRes sensor;
+    private OrganizationsRes organization;
+    private UserRes responsible;
 
     private Boolean isActive;
     private Integer eggsQuantity;
