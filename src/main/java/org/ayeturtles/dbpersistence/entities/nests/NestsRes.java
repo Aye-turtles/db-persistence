@@ -1,10 +1,13 @@
-package org.ayeturtles.dbpersistence.dto;
+package org.ayeturtles.dbpersistence.entities.nests;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ayeturtles.dbpersistence.dto.Organizations;
+import org.ayeturtles.dbpersistence.dto.Sensors;
+import org.ayeturtles.dbpersistence.dto.User;
 
 import java.sql.Timestamp;
 
@@ -12,24 +15,13 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name = "Nests")
-public class Nests {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+public class NestsRes {
     private Integer id;
     private String latitude;
     private String longitude;
 
-    @OneToOne
     private Sensors sensor;
-
-    @ManyToOne
     private Organizations organization;
-
-    @ManyToOne
     private User responsible;
 
     private Boolean isActive;

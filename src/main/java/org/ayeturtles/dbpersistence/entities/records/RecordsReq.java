@@ -1,10 +1,11 @@
-package org.ayeturtles.dbpersistence.dto;
+package org.ayeturtles.dbpersistence.entities.records;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ayeturtles.dbpersistence.dto.Nests;
 
 import java.sql.Timestamp;
 
@@ -12,15 +13,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "Records")
-public class Records {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+public class RecordsReq {
 
-    @ManyToOne
+    private Integer id;
     private Nests nest;
     private Timestamp samplingDateTime;
     private Float temperature;
