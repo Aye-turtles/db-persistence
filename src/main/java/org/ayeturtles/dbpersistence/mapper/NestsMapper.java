@@ -6,7 +6,7 @@ import org.ayeturtles.dbpersistence.entities.nests.NestsRes;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface NetsMapper {
+public interface NestsMapper {
     Nests toDto(NestsReq request);
     NestsRes toRes(Nests response);
 }

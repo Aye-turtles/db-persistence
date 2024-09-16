@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -19,8 +20,8 @@ public class UserServiceImpl implements IUserService {
     private UserMapper mapper;
 
     @Override
-    public List<User> getUsers() {
-        return repository.findAll();
+    public List<UserRes> getUsers() {
+        return repository.findAll().stream().map(mapper::toRes).collect(Collectors.toList());
     }
 
     @Override
