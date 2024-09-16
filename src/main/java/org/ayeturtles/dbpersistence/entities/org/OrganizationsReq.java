@@ -1,10 +1,11 @@
-package org.ayeturtles.dbpersistence.dto;
+package org.ayeturtles.dbpersistence.entities.org;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ayeturtles.dbpersistence.dto.User;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -13,19 +14,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table (name = "Organizations")
-public class Organizations {
+public class OrganizationsReq {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     private String name;
     private Timestamp dateActive;
     private Timestamp dateInactive;
     private Boolean isActive;
-    @OneToOne
     private User contact;
-    @OneToMany
     private List<User> members;
 }

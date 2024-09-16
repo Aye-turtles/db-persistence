@@ -1,10 +1,11 @@
-package org.ayeturtles.dbpersistence.dto;
+package org.ayeturtles.dbpersistence.entities.sensors;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ayeturtles.dbpersistence.dto.Organizations;
 
 import java.sql.Timestamp;
 
@@ -12,12 +13,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table (name = "Sensors")
-public class Sensors {
+public class SensorsRes {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     private String softwareVersion;
     private String hardwareVersion;
@@ -26,6 +24,5 @@ public class Sensors {
     private String moistureOffset;
     private Boolean isInUse;
     private Timestamp dateManufactured;
-    @ManyToOne
     private Organizations organization;
 }
