@@ -7,10 +7,10 @@ import org.ayeturtles.dbpersistence.mapper.UserMapper;
 import org.ayeturtles.dbpersistence.repository.UserRepository;
 import org.ayeturtles.dbpersistence.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -20,8 +20,8 @@ public class UserServiceImpl implements IUserService {
     private UserMapper mapper;
 
     @Override
-    public List<UserRes> getUsers() {
-        return repository.findAll().stream().map(mapper::toRes).collect(Collectors.toList());
+    public Page<UserRes> getUsers(Pageable pageable) {
+        return repository.findAll(pageable).map(mapper::toRes);
     }
 
     @Override
