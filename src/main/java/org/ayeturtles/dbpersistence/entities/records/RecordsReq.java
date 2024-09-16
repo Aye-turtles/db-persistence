@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ayeturtles.dbpersistence.dto.Nests;
+import org.ayeturtles.dbpersistence.entities.nests.NestsReq;
 
 import java.sql.Timestamp;
 
@@ -16,7 +17,7 @@ import java.sql.Timestamp;
 public class RecordsReq {
 
     private Integer id;
-    private Nests nest;
+    private NestsReq nest;
     private Timestamp samplingDateTime;
     private Float temperature;
     private Float humidityPercentage;
