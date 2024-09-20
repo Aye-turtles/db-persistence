@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  db-persistence  :
+    container_name: db-persistence
+    image: db-persistence:1.0.0
+    build: .
+    ports:
+      - 8090:8090
+    environment:
+      - DATABASE_URL = jdbc:postgresql://89.116.51.99:5432/db-persistence
+      - DATABASE_USER = postgres
+      - DATABASE_PASSWORD = MonitoringNests2024
