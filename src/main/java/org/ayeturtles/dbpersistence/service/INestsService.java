@@ -10,9 +10,14 @@ import java.util.List;
 
 public interface INestsService {
     Page<NestsRes> getNests(Pageable pageable);
+
+    NestsRes getNestByAssignedID(String assignedID);
+
     NestsRes getNestById(Integer id);
     NestsRes createNest(NestsReq nestReq);
     NestsRes updateNest(NestsReq nestReq);
     void deleteNest(Integer id);
     List<NestsRes> getNests();
+
+    NestsRes getNestBySensorAssignedID(String sensorAssignedID);
 }

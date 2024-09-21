@@ -34,6 +34,25 @@ public class NestsController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/{assignedID}")
+    public ResponseEntity<NestsRes> getNestByAssignedID(@PathVariable("assignedID")String assignedID){
+        NestsRes nestByAssignedID = nestService.getNestByAssignedID(assignedID);
+        if (nestByAssignedID == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(nestByAssignedID);
+    }
+
+    @GetMapping("/sensor/{assignedID}")
+    public ResponseEntity<NestsRes> getNestBySensorAssignedID(@PathVariable("assignedID")String sensorAssignedID){
+        NestsRes nestByAssignedID = nestService.getNestBySensorAssignedID(sensorAssignedID);
+        if (nestByAssignedID == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(nestByAssignedID);
+    }
+
+
     // Obtener todos los nidos
     @GetMapping("/all")
     public ResponseEntity<List<NestsRes>> getAllNests() {

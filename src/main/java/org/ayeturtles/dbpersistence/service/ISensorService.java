@@ -1,5 +1,6 @@
 package org.ayeturtles.dbpersistence.service;
 
+import org.ayeturtles.dbpersistence.dto.Sensors;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsReq;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsRes;
 import org.springframework.data.domain.Page;
@@ -14,4 +15,6 @@ public interface ISensorService {
     SensorsRes createSensor(SensorsReq nestReq);
     SensorsRes updateSensor(SensorsReq nestReq);
     void deleteSensor(Integer id);
+
+    Sensors getSensorByAssignedID(String sensorAssignedID);
 }

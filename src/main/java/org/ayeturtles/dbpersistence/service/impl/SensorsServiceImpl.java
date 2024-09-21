@@ -52,4 +52,9 @@ public class SensorsServiceImpl implements ISensorService {
     public void deleteSensor(Integer id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public Sensors getSensorByAssignedID(String sensorAssignedID) {
+        return repository.findByAssignedIDAndIsInUse(sensorAssignedID, true);
+    }
 }

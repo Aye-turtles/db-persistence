@@ -19,11 +19,24 @@ public class Sensors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(unique = true)
+    private String assignedID;
+
     private String softwareVersion;
     private String hardwareVersion;
+
     private String components;
-    private String temperatureOffset;
-    private String moistureOffset;
+    private Float temperatureMinError;
+    private Float temperatureMaxError;
+    private Float moistureMinError;
+    private Float moistureMaxError;
+    private Float xMinError;
+    private Float xMaxError;
+    private Float yMinError;
+    private Float yMaxError;
+    private Float zMinError;
+    private Float z1MaxError;
     private Boolean isInUse;
     private Timestamp dateManufactured;
     @ManyToOne

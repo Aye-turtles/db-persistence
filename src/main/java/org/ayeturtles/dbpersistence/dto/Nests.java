@@ -20,6 +20,10 @@ public class Nests {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
+    @Column(unique = true)
+    private String assignedID;
+
     private String latitude;
     private String longitude;
 

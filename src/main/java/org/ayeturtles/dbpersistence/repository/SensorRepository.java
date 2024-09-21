@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SensorRepository extends JpaRepository<Sensors, Integer> {
     Page<Sensors> findAll(Pageable pageable);
+
+    Sensors findByAssignedIDAndIsInUse(String assignedID, boolean isInUse);
 }

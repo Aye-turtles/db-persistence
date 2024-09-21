@@ -26,6 +26,6 @@ public class Organizations {
     private Boolean isActive;
     @OneToOne
     private Users contact;
-    @OneToMany
+    @ManyToMany
     private List<Users> members;
 }

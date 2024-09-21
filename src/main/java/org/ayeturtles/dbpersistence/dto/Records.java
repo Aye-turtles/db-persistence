@@ -29,6 +29,8 @@ public class Records {
     private Float x;
     private Float y;
     private Float z;
+    private Integer timing;
+    private Boolean isTesting;
     private Integer recordNumber;
     private Float day;
 }
