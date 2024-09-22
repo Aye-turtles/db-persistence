@@ -19,13 +19,10 @@ public class Sensors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Column(unique = true)
     private String assignedID;
-
     private String softwareVersion;
     private String hardwareVersion;
-
     private String components;
     private Float temperatureMinError;
     private Float temperatureMaxError;

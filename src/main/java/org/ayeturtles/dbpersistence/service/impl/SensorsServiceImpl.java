@@ -3,6 +3,7 @@ package org.ayeturtles.dbpersistence.service.impl;
 import org.ayeturtles.dbpersistence.dto.Sensors;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsReq;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsRes;
+import org.ayeturtles.dbpersistence.mapper.SensorManualMapper;
 import org.ayeturtles.dbpersistence.mapper.SensorMapper;
 import org.ayeturtles.dbpersistence.repository.SensorRepository;
 import org.ayeturtles.dbpersistence.service.ISensorService;
@@ -19,7 +20,7 @@ public class SensorsServiceImpl implements ISensorService {
     @Autowired
     private SensorRepository repository;
     @Autowired
-    private SensorMapper mapper;
+    private SensorManualMapper mapper;
 
     @Override
     public Page<SensorsRes> getSensors(Pageable pageable) {

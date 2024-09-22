@@ -4,7 +4,10 @@ import org.ayeturtles.dbpersistence.dto.Nests;
 import org.ayeturtles.dbpersistence.dto.Sensors;
 import org.ayeturtles.dbpersistence.entities.nests.NestsReq;
 import org.ayeturtles.dbpersistence.entities.nests.NestsRes;
+import org.ayeturtles.dbpersistence.entities.sensors.SensorsRes;
 import org.ayeturtles.dbpersistence.mapper.NestsMapper;
+import org.ayeturtles.dbpersistence.mapper.SensorManualMapper;
+import org.ayeturtles.dbpersistence.mapper.SensorMapper;
 import org.ayeturtles.dbpersistence.repository.NestsRepository;
 import org.ayeturtles.dbpersistence.service.INestsService;
 import org.ayeturtles.dbpersistence.service.ISensorService;
@@ -28,6 +31,9 @@ public class NestsServiceImpl implements INestsService {
 
     @Autowired
     private ISensorService sensorService;
+
+    @Autowired
+    private SensorManualMapper mapperSensor;
 
     @Override
     public Page<NestsRes> getNests(Pageable pageable) {
@@ -71,6 +77,9 @@ public class NestsServiceImpl implements INestsService {
     public NestsRes getNestBySensorAssignedID(String sensorAssignedID) {
         Sensors sensor = sensorService.getSensorByAssignedID(sensorAssignedID);
         Nests nest = repository.findBySensorAndIsActive(sensor, true);
-        return mapper.toRes(nest);
+        NestsRes nestsRes = mapper.toRes(nest);
+        SensorsRes res = mapperSensor.toRes(sensor);
+        nestsRes.setSensor(res);
+        return nestsRes;
     }
 }
