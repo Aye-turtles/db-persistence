@@ -39,7 +39,8 @@ public class SensorsServiceImpl implements ISensorService {
 
     @Override
     public SensorsRes createSensor(SensorsReq SensorsReq) {
-        Sensors res = repository.saveAndFlush(mapper.toDto(SensorsReq));
+        Sensors dto = mapper.toDto(SensorsReq);
+        Sensors res = repository.saveAndFlush(dto);
         return mapper.toRes(res);
     }
 
