@@ -81,4 +81,10 @@ public class NestsServiceImpl implements INestsService {
         nestsRes.setSensor(res);
         return nestsRes;
     }
+
+    @Override
+    public List<NestsRes> getLastsNests(int nestsQuantity) {
+        List<Nests> collect = repository.findByAssignedIDIsNotNullOrderById().stream().limit(nestsQuantity).toList();
+        return collect.stream().map(x-> mapper.toRes(x)).collect(Collectors.toList());
+    }
 }

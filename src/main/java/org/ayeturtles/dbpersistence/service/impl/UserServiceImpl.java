@@ -68,4 +68,9 @@ public class UserServiceImpl implements IUserService {
     public Users findByEmail(String email) {
         return repository.findByEmail(email);
     }
+
+    @Override
+    public UserRes getUserByEmail(String email) {
+        return mapper.toRes(repository.findByEmail(email));
+    }
 }

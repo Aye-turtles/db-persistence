@@ -20,4 +20,6 @@ public interface IUserService {
     Boolean loginUser(LoginReq req);
 
     Users findByEmail(String username);
+
+    UserRes getUserByEmail(String email);
 }

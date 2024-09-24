@@ -51,6 +51,14 @@ public class RecordsController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/recent")
+    public ResponseEntity<Page<RecordsRes>> getRecordsMostRecent() {
+        Pageable pageable = PageRequest.of(1, 8);
+        Page<RecordsRes> result = service.getRecords(pageable);
+        return ResponseEntity.ok(result);
+    }
+
+
     // Obtener todos los nidos
     @GetMapping("/all")
     public ResponseEntity<List<RecordsRes>> getAllRecords() {

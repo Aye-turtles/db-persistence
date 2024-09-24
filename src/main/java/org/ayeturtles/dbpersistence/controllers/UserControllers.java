@@ -1,5 +1,6 @@
 package org.ayeturtles.dbpersistence.controllers;
 
+import org.ayeturtles.dbpersistence.entities.user.LoginReq;
 import org.ayeturtles.dbpersistence.entities.user.UserReq;
 import org.ayeturtles.dbpersistence.entities.user.UserRes;
 import org.ayeturtles.dbpersistence.service.IUserService;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserControllers {
+
     @Autowired
     private IUserService service;
 
@@ -28,6 +30,24 @@ public class UserControllers {
         ));
     }
 
+    @PostMapping("/email")
+    public ResponseEntity<UserRes> getUserByEmail(@RequestBody LoginReq req){
+        UserRes res = service.getUserByEmail(req.getEmail());
+        if (res != null){
+            return ResponseEntity.ok(res);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<UserRes> getUserByID(@PathVariable Integer id){
+        UserRes res = service.getUserById(id);
+        if (res != null){
+            return ResponseEntity.ok(res);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
     @GetMapping("/all")
     public ResponseEntity<List<UserRes>> getAllUsers(){
         return ResponseEntity.ok(service.getUsers());

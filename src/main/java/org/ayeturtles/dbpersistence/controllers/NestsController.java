@@ -99,4 +99,13 @@ public class NestsController {
         NestsRes createdNest = nestService.createNest(body);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdNest);
     }
+    @GetMapping("/latest")
+    public ResponseEntity<List<NestsRes>> getLastsNests() {
+        List<NestsRes> result = nestService.getLastsNests(8);
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

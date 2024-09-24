@@ -20,4 +20,6 @@ public interface INestsService {
     List<NestsRes> getNests();
 
     NestsRes getNestBySensorAssignedID(String sensorAssignedID);
+
+    List<NestsRes> getLastsNests(int nestsQuantity);
 }
