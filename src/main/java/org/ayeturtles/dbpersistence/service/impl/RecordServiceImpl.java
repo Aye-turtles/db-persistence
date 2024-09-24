@@ -5,12 +5,14 @@ import org.ayeturtles.dbpersistence.entities.records.RecordsReq;
 import org.ayeturtles.dbpersistence.entities.records.RecordsRes;
 import org.ayeturtles.dbpersistence.mapper.RecordMapper;
 import org.ayeturtles.dbpersistence.repository.RecordRepository;
+import org.ayeturtles.dbpersistence.service.INestsService;
 import org.ayeturtles.dbpersistence.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +20,12 @@ import java.util.stream.Collectors;
 public class RecordServiceImpl implements IRecordService {
     @Autowired
     private RecordRepository repository;
+
     @Autowired
     private RecordMapper mapper;
+
+    @Autowired
+    private INestsService nestsService;
 
     @Override
     public Page<RecordsRes> getRecords(Pageable pageable) {
@@ -51,5 +57,21 @@ public class RecordServiceImpl implements IRecordService {
     @Override
     public List<RecordsRes> getRecords() {
         return repository.findAll().stream().map(mapper::toRes).collect(Collectors.toList());
+    }
+
+    @Override
+    public RecordsRes getLastRecordByNestID(String nestID) {
+        List<Records> firstByNestId = repository.findByNestId(Integer.valueOf(nestID));
+        if (firstByNestId.isEmpty()) {
+            return new RecordsRes();
+        }
+        firstByNestId.sort(Comparator.comparing(Records::getId));
+        return mapper.toRes(firstByNestId.getLast());
+    }
+
+    @Override
+    public List<RecordsRes> getRecordsByNestID(String nestID) {
+        List<Records> byNestId = repository.findByNestId(Integer.valueOf(nestID));
+        return byNestId.stream().map(mapper::toRes).collect(Collectors.toList());
     }
 }

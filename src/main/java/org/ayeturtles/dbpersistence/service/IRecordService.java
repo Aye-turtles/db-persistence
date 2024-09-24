@@ -15,4 +15,8 @@ public interface IRecordService {
     void deleteRecord(Integer id);
 
     List<RecordsRes> getRecords();
+
+    RecordsRes getLastRecordByNestID(String nestID);
+
+    List<RecordsRes> getRecordsByNestID(String nestID);
 }

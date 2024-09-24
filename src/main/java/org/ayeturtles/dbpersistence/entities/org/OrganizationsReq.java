@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ayeturtles.dbpersistence.entities.user.UserReq;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -20,9 +20,9 @@ public class OrganizationsReq {
     @JsonProperty("name")
     private String name;
     @JsonProperty("dateActive")
-    private Timestamp dateActive;
+    private LocalDateTime dateActive;
     @JsonProperty("dateInactive")
-    private Timestamp dateInactive;
+    private LocalDateTime dateInactive;
     @JsonProperty("isActive")
     private Boolean isActive;
     @JsonProperty("contact")

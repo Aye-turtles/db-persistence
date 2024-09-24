@@ -4,7 +4,6 @@ import org.ayeturtles.dbpersistence.dto.Sensors;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsReq;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsRes;
 import org.ayeturtles.dbpersistence.mapper.SensorManualMapper;
-import org.ayeturtles.dbpersistence.mapper.SensorMapper;
 import org.ayeturtles.dbpersistence.repository.SensorRepository;
 import org.ayeturtles.dbpersistence.service.ISensorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +39,17 @@ public class SensorsServiceImpl implements ISensorService {
     @Override
     public SensorsRes createSensor(SensorsReq SensorsReq) {
         Sensors dto = mapper.toDto(SensorsReq);
+        dto.setNrSumar(calulateNrSuma(dto.getTiming()));
         Sensors res = repository.saveAndFlush(dto);
         return mapper.toRes(res);
+    }
+
+    private Float calulateNrSuma(Integer timing) {
+        float s = (float) timing /1000;
+        float m = s/60;
+        float CRH = m/60;
+        float CRD = CRH * 24;
+        return 1/CRD;
     }
 
     @Override

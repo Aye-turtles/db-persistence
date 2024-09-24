@@ -1,7 +1,5 @@
 package org.ayeturtles.dbpersistence.controllers;
 
-import org.apache.coyote.Response;
-import org.ayeturtles.dbpersistence.entities.user.LoginReq;
 import org.ayeturtles.dbpersistence.entities.user.UserReq;
 import org.ayeturtles.dbpersistence.entities.user.UserRes;
 import org.ayeturtles.dbpersistence.service.IUserService;

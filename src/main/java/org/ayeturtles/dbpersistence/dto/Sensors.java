@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -24,18 +24,16 @@ public class Sensors {
     private String softwareVersion;
     private String hardwareVersion;
     private String components;
-    private Float temperatureMinError;
-    private Float temperatureMaxError;
+    private Float temperatureError;
     private Float moistureMinError;
     private Float moistureMaxError;
-    private Float xMinError;
-    private Float xMaxError;
-    private Float yMinError;
-    private Float yMaxError;
-    private Float zMinError;
-    private Float z1MaxError;
+    private Float xerror;
+    private Float yerror;
+    private Float zerror;
     private Boolean isInUse;
-    private Timestamp dateManufactured;
+    private LocalDateTime dateManufactured;
     @ManyToOne
     private Organizations organization;
+    private Float nrSumar;
+    private Integer timing;
 }

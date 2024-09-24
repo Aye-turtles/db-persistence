@@ -24,6 +24,22 @@ public class RecordsController {
 
     @Autowired
     private IRecordService service;
+    @GetMapping("/nest/{nestID}")
+    public ResponseEntity<List<RecordsRes>> getRecordsByNestID(@PathVariable String nestID){
+        List<RecordsRes> res = service.getRecordsByNestID(nestID);
+        if (res.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(res);
+    }
+    @GetMapping("/last/{nestID}")
+    public ResponseEntity<RecordsRes> getLastRecordByNestID(@PathVariable String nestID){
+        RecordsRes res = service.getLastRecordByNestID(nestID);
+        if (res==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(res);
+    }
 
     @GetMapping()
     public ResponseEntity<Page<RecordsRes>> getRecords(

@@ -7,7 +7,6 @@ import org.ayeturtles.dbpersistence.entities.nests.NestsRes;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsRes;
 import org.ayeturtles.dbpersistence.mapper.NestsMapper;
 import org.ayeturtles.dbpersistence.mapper.SensorManualMapper;
-import org.ayeturtles.dbpersistence.mapper.SensorMapper;
 import org.ayeturtles.dbpersistence.repository.NestsRepository;
 import org.ayeturtles.dbpersistence.service.INestsService;
 import org.ayeturtles.dbpersistence.service.ISensorService;

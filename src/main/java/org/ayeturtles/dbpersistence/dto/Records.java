@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,14 +22,13 @@ public class Records {
 
     @ManyToOne
     private Nests nest;
-    private Timestamp samplingDateTime;
+    private LocalDateTime samplingDateTime;
     private Float temperature;
     private Float humidityPercentage;
     private Float energy;
     private Float x;
     private Float y;
     private Float z;
-    private Integer timing;
     private Boolean isTesting;
     private Integer recordNumber;
     private Float day;

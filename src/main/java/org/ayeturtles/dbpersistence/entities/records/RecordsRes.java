@@ -1,15 +1,13 @@
 package org.ayeturtles.dbpersistence.entities.records;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ayeturtles.dbpersistence.dto.Nests;
 import org.ayeturtles.dbpersistence.entities.nests.NestsRes;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +19,7 @@ public class RecordsRes {
     @JsonProperty("nest")
     private NestsRes nest;
     @JsonProperty("samplingDateTime")
-    private Timestamp samplingDateTime;
+    private LocalDateTime samplingDateTime;
     @JsonProperty("temperature")
     private Float temperature;
     @JsonProperty("humidityPercentage")
@@ -34,8 +32,6 @@ public class RecordsRes {
     private Float y;
     @JsonProperty("z")
     private Float z;
-    @JsonProperty("timing")
-    private Integer timing;
     @JsonProperty("isTesting")
     private Boolean isTesting;
     @JsonProperty("recordNumber")

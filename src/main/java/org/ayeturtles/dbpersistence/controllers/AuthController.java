@@ -13,7 +13,8 @@ public class AuthController {
     private IUserService userService;
 
     @PostMapping("/login")
-    public boolean login(@RequestParam String email, @RequestParam String password) {
-        return userService.loginUser(new LoginReq(email, password));
+    public boolean login(@RequestBody LoginReq req) {
+        return userService.loginUser(req);
     }
+
 }

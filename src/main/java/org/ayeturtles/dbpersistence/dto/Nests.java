@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -42,13 +42,13 @@ public class Nests {
     private Integer depredatedEggsQuantity;
     private Integer infertileEggs;
     private Character zone;
-    private Timestamp layingDate;
-    private Timestamp collectionDate;
-    private Timestamp monitoringStartDate;
-    private Timestamp monitoringEndDate;
-    private Timestamp firstHatchingRecordedDate;
-    private Timestamp lastHatchingRecordedDate;
-    private Timestamp nestCleaningDate;
+    private LocalDateTime layingDate;
+    private LocalDateTime collectionDate;
+    private LocalDateTime monitoringStartDate;
+    private LocalDateTime monitoringEndDate;
+    private LocalDateTime firstHatchingRecordedDate;
+    private LocalDateTime lastHatchingRecordedDate;
+    private LocalDateTime nestCleaningDate;
     private String nestBehavior;
 
 }

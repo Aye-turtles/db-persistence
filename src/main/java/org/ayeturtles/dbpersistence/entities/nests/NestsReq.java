@@ -9,7 +9,7 @@ import org.ayeturtles.dbpersistence.entities.org.OrganizationsReq;
 import org.ayeturtles.dbpersistence.entities.sensors.SensorsReq;
 import org.ayeturtles.dbpersistence.entities.user.UserReq;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -50,19 +50,19 @@ public class NestsReq {
     @JsonProperty("zone")
     private Character zone;
     @JsonProperty("layingDate")
-    private Timestamp layingDate;
+    private LocalDateTime layingDate;
     @JsonProperty("collectionDate")
-    private Timestamp collectionDate;
+    private LocalDateTime collectionDate;
     @JsonProperty("monitoringStartDate")
-    private Timestamp monitoringStartDate;
+    private LocalDateTime monitoringStartDate;
     @JsonProperty("monitoringEndDate")
-    private Timestamp monitoringEndDate;
+    private LocalDateTime monitoringEndDate;
     @JsonProperty("firstHatchingRecordedDate")
-    private Timestamp firstHatchingRecordedDate;
+    private LocalDateTime firstHatchingRecordedDate;
     @JsonProperty("lastHatchingRecordedDate")
-    private Timestamp lastHatchingRecordedDate;
+    private LocalDateTime lastHatchingRecordedDate;
     @JsonProperty("nestCleaningDate")
-    private Timestamp nestCleaningDate;
+    private LocalDateTime nestCleaningDate;
     @JsonProperty("nestBehavior")
     private String nestBehavior;
 
