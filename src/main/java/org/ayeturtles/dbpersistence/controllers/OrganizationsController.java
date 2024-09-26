@@ -29,6 +29,11 @@ public class OrganizationsController {
                 PageRequest.of(page, size)
         ));
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<OrganizationsRes> getOrgbyID(@PathVariable String id){
+        return ResponseEntity.ok(service.getOrganizationById(Integer.valueOf(id)));
+    }
+
 
     @GetMapping("/all")
     public ResponseEntity<List<OrganizationsRes>> getAllOrganizations(){
@@ -51,8 +56,7 @@ public class OrganizationsController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
+    
     @PostMapping
     public ResponseEntity<OrganizationsRes> createOrg(@RequestBody OrganizationsReq req){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createOrganization(req));
