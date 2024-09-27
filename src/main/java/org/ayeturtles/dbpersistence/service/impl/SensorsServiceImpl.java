@@ -33,7 +33,9 @@ public class SensorsServiceImpl implements ISensorService {
 
     @Override
     public SensorsRes getSensorById(Integer id) {
-        return mapper.toRes(repository.getReferenceById(id));
+        Sensors referenceById = repository.getReferenceById(id);
+        SensorsRes res = mapper.toRes(referenceById);
+        return res;
     }
 
     @Override
@@ -54,7 +56,9 @@ public class SensorsServiceImpl implements ISensorService {
 
     @Override
     public SensorsRes updateSensor(SensorsReq SensorsReq) {
-        Sensors res = repository.saveAndFlush(mapper.toDto(SensorsReq));
+        Sensors dto = mapper.toDto(SensorsReq);
+
+        Sensors res = repository.saveAndFlush(dto);
         return mapper.toRes(res);
     }
 

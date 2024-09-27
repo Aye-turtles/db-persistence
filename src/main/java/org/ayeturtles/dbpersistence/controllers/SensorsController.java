@@ -28,6 +28,11 @@ public class SensorsController {
         ));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<SensorsRes> getSensorByID(@PathVariable String id){
+        return ResponseEntity.ok(service.getSensorById(Integer.valueOf(id)));
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<SensorsRes>> getAllSensors(){
         return ResponseEntity.ok(service.getSensors());

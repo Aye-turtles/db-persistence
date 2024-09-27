@@ -29,6 +29,7 @@ public class SensorManualMapperImpl implements SensorManualMapper {
                 .dateManufactured(request.getDateManufactured())
                 .organization(organizationMapper.toDto(request.getOrganization()))
                 .nrSumar(request.getNrSumar())
+                .timing(request.getTiming())
                 .build();
     }
 
@@ -50,6 +51,7 @@ public class SensorManualMapperImpl implements SensorManualMapper {
                 .dateManufactured(dto.getDateManufactured())
                 .organization(organizationMapper.toRes(dto.getOrganization()))
                 .nrSumar(dto.getNrSumar())
+                .timing(dto.getTiming())
                 .build();
     }
 }

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class Organizations {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private LocalDateTime dateActive;
-    private LocalDateTime dateInactive;
+    private LocalDate dateActive;
+    private LocalDate dateInactive;
     private Boolean isActive;
     @OneToOne
     private Users contact;

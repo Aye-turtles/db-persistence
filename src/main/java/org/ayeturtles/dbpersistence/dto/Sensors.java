@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -31,7 +32,7 @@ public class Sensors {
     private Float yerror;
     private Float zerror;
     private Boolean isInUse;
-    private LocalDateTime dateManufactured;
+    private LocalDate dateManufactured;
     @ManyToOne
     private Organizations organization;
     private Float nrSumar;

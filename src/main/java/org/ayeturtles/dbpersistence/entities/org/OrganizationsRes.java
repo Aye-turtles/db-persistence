@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ayeturtles.dbpersistence.entities.user.UserRes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,9 +21,9 @@ public class OrganizationsRes {
     @JsonProperty("name")
     private String name;
     @JsonProperty("dateActive")
-    private LocalDateTime dateActive;
+    private LocalDate dateActive;
     @JsonProperty("dateInactive")
-    private LocalDateTime dateInactive;
+    private LocalDate dateInactive;
     @JsonProperty("isActive")
     private Boolean isActive;
     @JsonProperty("contact")

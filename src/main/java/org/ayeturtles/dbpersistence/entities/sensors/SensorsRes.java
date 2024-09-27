@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.ayeturtles.dbpersistence.entities.org.OrganizationsRes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,7 +26,7 @@ public class SensorsRes {
     private Float yerror;
     private Float zerror;
     private Boolean isInUse;
-    private LocalDateTime dateManufactured;
+    private LocalDate dateManufactured;
     private OrganizationsRes organization;
     private Float nrSumar;
     private Integer timing;
