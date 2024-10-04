@@ -50,8 +50,14 @@ public class NestsServiceImpl implements INestsService {
     }
 
     @Override
-    public NestsRes createNest(NestsReq NestsReq) {
-        Nests res = repository.saveAndFlush(mapper.toDto(NestsReq));
+    public NestsRes createNest(NestsReq req) {
+        List<Nests> activeNestsBySensor = repository.findActiveNestsBySensor(req.getSensor().getId());
+        if (!activeNestsBySensor.isEmpty()){
+
+            throw new IllegalArgumentException("El sensor ya está asignado a un nido activo.");
+
+        }
+        Nests res = repository.saveAndFlush(mapper.toDto(req));
         return mapper.toRes(res);
     }
 

@@ -34,7 +34,7 @@ public class NestsController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/{assignedID}")
+    @GetMapping("/assigned/{assignedID}")
     public ResponseEntity<NestsRes> getNestByAssignedID(@PathVariable("assignedID")String assignedID){
         NestsRes nestByAssignedID = nestService.getNestByAssignedID(assignedID);
         if (nestByAssignedID == null){
@@ -96,8 +96,12 @@ public class NestsController {
     public ResponseEntity<NestsRes> createNest(
             @Parameter(in = ParameterIn.DEFAULT, description = "Nest object that needs to be added",
                     required = true, schema = @Schema()) @Valid @RequestBody NestsReq body) {
-        NestsRes createdNest = nestService.createNest(body);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdNest);
+        try {
+            NestsRes createdNest = nestService.createNest(body);
+            return ResponseEntity.ok(createdNest);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new NestsRes());
+        }
     }
     @GetMapping("/latest")
     public ResponseEntity<List<NestsRes>> getLastsNests() {

@@ -25,7 +25,7 @@ public class Organizations {
     private LocalDate dateActive;
     private LocalDate dateInactive;
     private Boolean isActive;
-    @OneToOne
+    @ManyToOne
     private Users contact;
     @ManyToMany
     private List<Users> members;

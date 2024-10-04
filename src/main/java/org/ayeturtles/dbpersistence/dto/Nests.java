@@ -27,7 +27,7 @@ public class Nests {
     private String latitude;
     private String longitude;
 
-    @OneToOne
+    @ManyToOne
     private Sensors sensor;
 
     @ManyToOne
