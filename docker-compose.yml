@@ -8,6 +8,6 @@ services:
     ports:
       - 8090:8090
     environment:
-      - DATABASE_URL=jdbc:postgresql://89.116.51.99:5432/db-persistence
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=MonitoringNests2024
+      - DATABASE_URL=jdbc:postgresql://
+      - DATABASE_USER=
+      - DATABASE_PASSWORD=
